@@ -5,7 +5,7 @@
 #include <QMultimedia>
 #include <QtMultimediaWidgets>
 #include <QFileDialog>
-
+#include "videowindowrender.h"
 namespace Ui {
 class MainWindow;
 }
@@ -23,6 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    IStrategy* rendermethod;
     QMediaPlayer* mediaPlayer;
     QVideoWidget* videoWidget;
 };
