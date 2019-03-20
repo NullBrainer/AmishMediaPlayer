@@ -1,14 +1,14 @@
 #ifndef VIDEOWINDOWRENDER_H
 #define VIDEOWINDOWRENDER_H
 
-#include "istrategy.h"
+#include "RenderStrategy.h"
 
 /*
 A Class using the IStrategy interface used to
 render objects used for the video player.
 
 */
-class VideoWindowRender : public IStrategy
+class VideoWindowRender : public RenderStrategy
 {
  public:
     virtual void Render(QObject*);

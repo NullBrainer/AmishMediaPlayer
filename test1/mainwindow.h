@@ -23,7 +23,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    IStrategy* rendermethod;
+    RenderStrategy* rendermethod;
     QMediaPlayer* mediaPlayer;
     QVideoWidget* videoWidget;
 };

@@ -26,13 +26,22 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    videowindowrender.cpp \
+    videowindowwidget.cpp \
+    videocontrollerwidget.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    videowindowrender.h \
+    RenderStrategy.h \
+    videowindowwidget.h \
+    videocontrollerwidget.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    videowindowwidget.ui \
+    videocontrollerwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
