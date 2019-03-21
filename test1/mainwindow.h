@@ -2,13 +2,14 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QMultimedia>
-#include <QtMultimediaWidgets>
-#include <QFileDialog>
 #include "videowindowrender.h"
 namespace Ui {
 class MainWindow;
 }
+/*
+Main Window will be the encapsulating class that instantiates and uses
+the main componenents of the project.
+*/
 
 class MainWindow : public QMainWindow
 {
@@ -23,9 +24,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    RenderStrategy* rendermethod;
-    QMediaPlayer* mediaPlayer;
-    QVideoWidget* videoWidget;
+    //RenderStrategy* rendermethod;
+    //QWidget* renderobject
 };
 
 #endif // MAINWINDOW_H

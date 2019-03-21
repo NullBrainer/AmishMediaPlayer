@@ -3,6 +3,10 @@
 
 #include <QWidget>
 
+/*The class will used button rendering,
+ *  the parent given will be the observers of the
+buttons rendered from this class.*/
+
 namespace Ui {
 class VideoControllerWidget;
 }

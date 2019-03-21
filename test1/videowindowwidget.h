@@ -2,7 +2,10 @@
 #define VIDEOWINDOWWIDGET_H
 
 #include <QWidget>
+/*
+The widget that be encapsulating render behavior and buttons.
 
+*/
 namespace Ui {
 class VideoWindowWidget;
 }

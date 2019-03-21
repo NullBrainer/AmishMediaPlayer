@@ -9,7 +9,7 @@ The pointer to the main window will be the argument for the QObject.
 class RenderStrategy
 {
  public:
-virtual void Render(QObject*) = 0;
+virtual void Render(QMainWindow*) = 0;
 virtual ~RenderStrategy() = default;
  private:
 
