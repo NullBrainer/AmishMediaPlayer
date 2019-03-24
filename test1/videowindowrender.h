@@ -15,7 +15,7 @@ using QVideoWidget.
 class VideoWindowRender : public RenderStrategy
 {
  public:
-    virtual void Render(QMainWindow*);
+    virtual void Render(QWidget*);
 
  private:
     QMediaPlayer* mediaPlayer;

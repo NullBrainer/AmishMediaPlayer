@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "videowindowrender.h"
+
+#include "videowindowwidget.h"
 namespace Ui {
 class MainWindow;
 }
@@ -24,8 +25,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    //RenderStrategy* rendermethod;
-    //QWidget* renderobject
+    VideoWindowWidget* Video;
 };
 
 #endif // MAINWINDOW_H

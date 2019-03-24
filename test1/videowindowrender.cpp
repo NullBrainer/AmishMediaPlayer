@@ -4,13 +4,13 @@
  * MediaPlayerWindow - the reference to the parent class that will render the video player
  * It's the MainWindow class
 */
-void VideoWindowRender::Render(QMainWindow* MediaPlayerWindow)
+void VideoWindowRender::Render(QWidget* MediaPlayerWindow)
 {
         mediaPlayer = new QMediaPlayer(MediaPlayerWindow);
         videoWidget = new QVideoWidget(MediaPlayerWindow);
 
         mediaPlayer->setVideoOutput(videoWidget);
-        MediaPlayerWindow->setCentralWidget(videoWidget);
+//        MediaPlayerWindow->setCentralWidget(videoWidget);
         QString videoFileName = QFileDialog::getOpenFileName(MediaPlayerWindow, "Open Video File", "", "Video File (*.mp4)");
 
         mediaPlayer->stop();
