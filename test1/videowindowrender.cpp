@@ -9,12 +9,16 @@ void VideoWindowRender::Render(QWidget* MediaPlayerWindow)
         mediaPlayer = new QMediaPlayer(MediaPlayerWindow);
         videoWidget = new QVideoWidget(MediaPlayerWindow);
 
-        mediaPlayer->setVideoOutput(videoWidget);
-//        MediaPlayerWindow->setCentralWidget(videoWidget);
+        view = new QGraphicsView();
+        view->setParent(MediaPlayerWindow);
+        view->setViewport(videoWidget);
+
         QString videoFileName = QFileDialog::getOpenFileName(MediaPlayerWindow, "Open Video File", "", "Video File (*.mp4)");
 
         mediaPlayer->stop();
         mediaPlayer->setMedia(QUrl::fromLocalFile(videoFileName));
+        mediaPlayer->setVideoOutput(videoWidget);
+
         videoWidget->show();
         mediaPlayer->play();
 }

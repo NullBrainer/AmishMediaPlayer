@@ -29,14 +29,17 @@ SOURCES += \
         mainwindow.cpp \
     videowindowrender.cpp \
     videowindowwidget.cpp \
-    videocontrollerwidget.cpp
+    videocontrollerwidget.cpp \
+    videocontroller.cpp
 
 HEADERS += \
         mainwindow.h \
     videowindowrender.h \
     RenderStrategy.h \
     videowindowwidget.h \
-    videocontrollerwidget.h
+    videocontrollerwidget.h \
+    icontroller.h \
+    videocontroller.h
 
 FORMS += \
         mainwindow.ui \

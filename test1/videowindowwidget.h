@@ -23,8 +23,11 @@ public:
 
 private:
     Ui::VideoWindowWidget *ui;
-    RenderStrategy* rendermethod;
+    // RenderStrategy* rendermethod;
+
+    // VidController and videoWidget will interact
     VideoControllerWidget* VidController;
+    QVideoWidget* videoWidget;
 
 };
 

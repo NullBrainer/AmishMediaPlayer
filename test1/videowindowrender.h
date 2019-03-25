@@ -20,7 +20,7 @@ class VideoWindowRender : public RenderStrategy
  private:
     QMediaPlayer* mediaPlayer;
     QVideoWidget* videoWidget;
-
+    QGraphicsView* view;
 };
 
 #endif // VIDEOWINDOWRENDER_H
