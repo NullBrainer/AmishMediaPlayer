@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include "audiowindowwidget.h"
 #include "videowindowwidget.h"
 namespace Ui {
 class MainWindow;
@@ -23,9 +23,14 @@ public:
 private slots:
 
 
+    void on_chooseVideoPlayer_pressed();
+
+    void on_chooseAudioPlayer_pressed();
+
 private:
     Ui::MainWindow *ui;
     VideoWindowWidget* Video;
+    AudioWindowWidget* Audio;
 };
 
 #endif // MAINWINDOW_H

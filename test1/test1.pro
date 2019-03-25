@@ -30,7 +30,10 @@ SOURCES += \
     videowindowrender.cpp \
     videowindowwidget.cpp \
     videocontrollerwidget.cpp \
-    videocontroller.cpp
+    videocontroller.cpp \
+    audiowindowwidget.cpp \
+    audiocontrollerwidget.cpp \
+    audiocontroller.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,12 +42,17 @@ HEADERS += \
     videowindowwidget.h \
     videocontrollerwidget.h \
     icontroller.h \
-    videocontroller.h
+    videocontroller.h \
+    audiowindowwidget.h \
+    audiocontrollerwidget.h \
+    audiocontroller.h
 
 FORMS += \
         mainwindow.ui \
     videowindowwidget.ui \
-    videocontrollerwidget.ui
+    videocontrollerwidget.ui \
+    audiowindowwidget.ui \
+    audiocontrollerwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

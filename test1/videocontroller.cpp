@@ -6,6 +6,7 @@ VideoController::VideoController(QVideoWidget* vw):videoWidget{vw}{
 
 }
 void VideoController::change(QString videoFile){
+    mediaPlayer->stop();
     mediaPlayer->setMedia(QUrl::fromLocalFile(videoFile));
     // For testing reasons, play
     mediaPlayer->play();

@@ -21,3 +21,14 @@ VideoWindowWidget::~VideoWindowWidget()
     // delete rendermethod;
     delete VidController;
 }
+
+void VideoWindowWidget::on_FileButton_pressed()
+{
+    QString videoFile = QFileDialog::getOpenFileName(this, "Open Video File", "", "Video File (*.mp4)");
+    VidController->changeVideo(videoFile);
+}
+
+void VideoWindowWidget::on_actiononMediaSwitch_triggered()
+{
+    VidController->on_actionStop_triggered();
+}

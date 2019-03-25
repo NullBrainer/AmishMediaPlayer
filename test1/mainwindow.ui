@@ -7,13 +7,50 @@
     <x>0</x>
     <y>0</y>
     <width>556</width>
-    <height>396</height>
+    <height>450</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="chooseVideoPlayer">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Video</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="chooseAudioPlayer">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>0</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Audio</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="RenderSpace">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>531</width>
+      <height>391</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

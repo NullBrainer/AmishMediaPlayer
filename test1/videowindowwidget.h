@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "videocontrollerwidget.h"
 #include "videowindowrender.h"
+#include <QFileDialog>
 
 
 /*
@@ -20,6 +21,11 @@ class VideoWindowWidget : public QWidget
 public:
     explicit VideoWindowWidget(QWidget *parent = nullptr);
     ~VideoWindowWidget();
+
+private slots:
+    void on_FileButton_pressed();
+public slots:
+    void on_actiononMediaSwitch_triggered();
 
 private:
     Ui::VideoWindowWidget *ui;
