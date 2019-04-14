@@ -1,12 +1,13 @@
 #include "audiocontrollerwidget.h"
 #include "ui_audiocontrollerwidget.h"
 
-AudioControllerWidget::AudioControllerWidget(QWidget *parent) :
+AudioControllerWidget::AudioControllerWidget(QWidget *parent, QMediaPlayer * mediaPlayer) :
     QWidget(parent),
     ui(new Ui::AudioControllerWidget)
 {
     ui->setupUi(this);
-    audioController = new AudioController();
+    this->mediaPlayer = mediaPlayer;
+    audioController = new AudioController(this->mediaPlayer);
     // For testing purposes
     /*
     QString audioFileName = QFileDialog::getOpenFileName(parent, "Open Audio File", "", "Video File (*.mp3)");

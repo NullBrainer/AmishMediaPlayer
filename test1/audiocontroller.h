@@ -6,7 +6,7 @@
 class AudioController : public IController
 {
 public:
-    AudioController();
+    AudioController(QMediaPlayer*);
     virtual void play();
     virtual void pause();
     virtual void stop();

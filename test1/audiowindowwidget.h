@@ -13,7 +13,7 @@ class AudioWindowWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit AudioWindowWidget(QWidget *parent = nullptr);
+    explicit AudioWindowWidget(QWidget *parent = nullptr, QMediaPlayer * mediaPlayer = nullptr);
     ~AudioWindowWidget();
 
 private slots:
@@ -24,6 +24,7 @@ public slots:
 private:
     Ui::AudioWindowWidget *ui;
     AudioControllerWidget* AudioController;
+    QMediaPlayer * mediaPlayer;
     // Optional display widget for audio
 
 };

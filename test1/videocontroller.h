@@ -6,7 +6,7 @@
 /* Concrete controller for videos */
 class VideoController : public IController{
 public:
-    VideoController(QVideoWidget*);
+    VideoController(QVideoWidget*, QMediaPlayer*);
     virtual void play();
     virtual void pause();
     virtual void stop();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>556</width>
-    <height>450</height>
+    <width>950</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <widget class="QPushButton" name="chooseVideoPlayer">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>390</x>
       <y>0</y>
       <width>93</width>
       <height>28</height>
@@ -30,7 +30,7 @@
    <widget class="QPushButton" name="chooseAudioPlayer">
     <property name="geometry">
      <rect>
-      <x>110</x>
+      <x>490</x>
       <y>0</y>
       <width>93</width>
       <height>28</height>
@@ -43,10 +43,20 @@
    <widget class="QGraphicsView" name="RenderSpace">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>40</y>
+      <x>390</x>
+      <y>30</y>
       <width>531</width>
       <height>391</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="playlistDisplay">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>361</width>
+      <height>611</height>
      </rect>
     </property>
    </widget>

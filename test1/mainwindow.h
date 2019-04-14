@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "audiowindowwidget.h"
 #include "videowindowwidget.h"
+#include "playlist.h"
 namespace Ui {
 class MainWindow;
 }
@@ -29,6 +30,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    QMediaPlayer * mediaPlayer;
     VideoWindowWidget* Video;
     AudioWindowWidget* Audio;
 };

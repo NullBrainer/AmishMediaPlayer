@@ -19,7 +19,7 @@ class VideoControllerWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit VideoControllerWidget(QWidget *parent = nullptr, QVideoWidget* vw = nullptr);
+    explicit VideoControllerWidget(QWidget *parent = nullptr, QVideoWidget* vw = nullptr, QMediaPlayer * mediaPlayer = nullptr);
     VideoWindowRender* MakeWindow();
     void changeVideo(QString);
     ~VideoControllerWidget();
@@ -41,6 +41,7 @@ private slots:
 private:
     Ui::VideoControllerWidget *ui;
     IController * videoController;
+    QMediaPlayer * mediaPlayer;
 };
 
 #endif // VIDEOCONTROLLERWIDGET_H

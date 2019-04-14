@@ -1,11 +1,12 @@
 #include "videocontrollerwidget.h"
 #include "ui_videocontrollerwidget.h"
-VideoControllerWidget::VideoControllerWidget(QWidget *parent, QVideoWidget* vw) :
+VideoControllerWidget::VideoControllerWidget(QWidget *parent, QVideoWidget* vw, QMediaPlayer * mediaPlayer) :
     QWidget(parent),
     ui(new Ui::VideoControllerWidget)
 {
     ui->setupUi(this);
-    videoController = new VideoController(vw);
+    this->mediaPlayer = mediaPlayer;
+    videoController = new VideoController(vw, this->mediaPlayer);
     // For testing purposes
     /*QString videoFileName = QFileDialog::getOpenFileName(parent, "Open Video File", "", "Video File (*.mp4)");
     this->changeVideo(videoFileName);*/

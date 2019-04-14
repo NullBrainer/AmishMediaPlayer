@@ -1,8 +1,8 @@
 #include "videocontroller.h"
 #include <QFileDialog>
-VideoController::VideoController(QVideoWidget* vw):videoWidget{vw}{
-    mediaPlayer = new QMediaPlayer();
-    mediaPlayer->setVideoOutput(videoWidget);
+VideoController::VideoController(QVideoWidget* vw, QMediaPlayer * mediaPlayer):videoWidget{vw}{
+    this->mediaPlayer = mediaPlayer;
+    this->mediaPlayer->setVideoOutput(videoWidget);
 
 }
 void VideoController::change(QString videoFile){

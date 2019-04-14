@@ -19,7 +19,7 @@ class VideoWindowWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit VideoWindowWidget(QWidget *parent = nullptr);
+    VideoWindowWidget(QWidget *parent = nullptr, QMediaPlayer *mediaPlayer = nullptr);
     ~VideoWindowWidget();
 
 private slots:
@@ -29,6 +29,7 @@ public slots:
 
 private:
     Ui::VideoWindowWidget *ui;
+    QMediaPlayer * mediaPlayer;
     // RenderStrategy* rendermethod;
 
     // VidController and videoWidget will interact

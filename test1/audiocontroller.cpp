@@ -1,8 +1,8 @@
 #include "audiocontroller.h"
 
-AudioController::AudioController()
+AudioController::AudioController(QMediaPlayer * mediaPlayer)
 {
-    mediaPlayer = new QMediaPlayer();
+    this->mediaPlayer = mediaPlayer;
 }
 
 void AudioController::change(QString audioFile){

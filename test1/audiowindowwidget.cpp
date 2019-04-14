@@ -1,12 +1,13 @@
 #include "audiowindowwidget.h"
 #include "ui_audiowindowwidget.h"
 
-AudioWindowWidget::AudioWindowWidget(QWidget *parent) :
+AudioWindowWidget::AudioWindowWidget(QWidget *parent, QMediaPlayer *mediaPlayer) :
     QWidget(parent),
     ui(new Ui::AudioWindowWidget)
 {
     ui->setupUi(this);
-    AudioController = new AudioControllerWidget(this);
+    this->mediaPlayer = mediaPlayer;
+    AudioController = new AudioControllerWidget(this, this->mediaPlayer);
     ui->ButtonController->setViewport(AudioController);
 }
 

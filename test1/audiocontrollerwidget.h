@@ -15,7 +15,7 @@ class AudioControllerWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit AudioControllerWidget(QWidget *parent = nullptr);
+    explicit AudioControllerWidget(QWidget *parent = nullptr, QMediaPlayer * mediaPlayer = nullptr);
     void changeAudio(QString);
     ~AudioControllerWidget();
 
@@ -36,6 +36,7 @@ private slots:
 private:
     Ui::AudioControllerWidget *ui;
     IController * audioController;
+    QMediaPlayer * mediaPlayer;
 };
 
 #endif // AUDIOCONTROLLERWIDGET_H
