@@ -94,15 +94,7 @@ void MainWindow::loadAudioPlayer(){
 }
 
 void MainWindow::playlistLoaded(){
-    QString fileName = playlist->currentFileName();
-    qDebug() << fileName;
-    if(isVideo(fileName)){
-        loadVideoPlayer();
-        Video->changeFile(fileName);
-    }else{
-        loadAudioPlayer();
-        Audio->changeFile(fileName);
-    }
+    checkPlaylistAndChange();
     qDebug() << "SIGNAL SENT";
 }
 
@@ -113,13 +105,25 @@ bool MainWindow::isVideo(QString fileName){
 void MainWindow::playlistNext(){
     playlist->next();
     qDebug("PLAYLIST MOVE FORWARD");
+    checkPlaylistAndChange();
 }
 
 void MainWindow::playlistPrevious(){
     playlist->previous();
     qDebug("PLAYLIST MOVE BACKWARD");
+    checkPlaylistAndChange();
 }
 
+void MainWindow::checkPlaylistAndChange(){
+    if(isVideo(playlist->currentFileName())){
+        loadVideoPlayer();
+        Video->changeFile(playlist->currentFileName());
+    }
+    else{
+        loadAudioPlayer();
+        Audio->changeFile(playlist->currentFileName());
+    }
+}
 
 
 

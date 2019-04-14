@@ -25,6 +25,7 @@ public:
     bool isVideo(QString);
     void loadVideoPlayer();
     void loadAudioPlayer();
+    void checkPlaylistAndChange();
 private slots:
 
     void playlistNext();
