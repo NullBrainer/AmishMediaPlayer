@@ -2,7 +2,7 @@
 #include "ui_playlist.h"
 #include <QDebug>
 
-Playlist::Playlist(QWidget *parent, QMediaPlayer * mediaPlayer, QGraphicsView * displayPort) :
+Playlist::Playlist(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Playlist)
 {
@@ -97,6 +97,9 @@ void Playlist::on_addPlaylistButton_pressed()
     qDebug() << mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
     ui->playlistListWidget->addItem(currentPlaylistName);
     mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
+    mediaPlaylist->next();
+    displayPlaylistContent();
+    qDebug() << "CURRENT INDEX RIGHT AFTER CREATING: " << mediaPlaylist->currentIndex();
 
 }
 
@@ -165,5 +168,13 @@ void Playlist::on_deleteContentButton_pressed()
         ui->contentListWidget->takeItem(index);
         mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
         qDebug() << "AFTER DELETION" << mediaPlaylist->mediaCount();
+    }
+}
+
+void Playlist::on_deletePlaylistButton_pressed()
+{
+    if(ui->playlistListWidget->currentItem() != nullptr){
+        QDir().remove("Playlists/" + ui->playlistListWidget->currentItem()->text());
+        ui->playlistListWidget->takeItem(ui->playlistListWidget->currentRow());
     }
 }

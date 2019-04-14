@@ -3,7 +3,6 @@
 VideoController::VideoController(QVideoWidget* vw, QMediaPlayer * mediaPlayer):videoWidget{vw}{
     this->mediaPlayer = mediaPlayer;
     this->mediaPlayer->setVideoOutput(videoWidget);
-
 }
 void VideoController::change(QString videoFile){
     mediaPlayer->stop();

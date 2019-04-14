@@ -19,7 +19,7 @@ class Playlist : public QWidget
     Q_OBJECT
 
 public:
-    explicit Playlist(QWidget *parent = nullptr, QMediaPlayer *mediaPlayer = nullptr, QGraphicsView * displayPort = nullptr);
+    explicit Playlist(QWidget *parent = nullptr);
     ~Playlist();
     void displayPlaylistContent();
     QString currentFileName();
@@ -39,6 +39,8 @@ private slots:
     void on_addContentButton_pressed();
 
     void on_deleteContentButton_pressed();
+
+    void on_deletePlaylistButton_pressed();
 
 private:
     Ui::Playlist *ui;

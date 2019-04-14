@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     Audio = nullptr;
     Video = nullptr;
     mediaPlayer = new QMediaPlayer();
-    ui->centralWidget->setFixedSize(1000,800); // 800,600
+    ui->centralWidget->setFixedSize(1200,800); // 800,600
     ui->RenderSpace->setFixedSize(800,600);
     this->adjustSize();
     playlist = new Playlist(this);
@@ -83,7 +83,7 @@ void MainWindow::loadVideoPlayer(){
     ui->RenderSpace->setViewport(Video);
     Video->show();
     connect(Video, SIGNAL(orderPushedForward()), this, SLOT(playlistNext()));
-    connect(Video, SIGNAL(orderPushedBackward()), this, SLOT(playlistNext()));
+    connect(Video, SIGNAL(orderPushedBackward()), this, SLOT(playlistPrevious()));
 }
 
 void MainWindow::loadAudioPlayer(){
@@ -108,6 +108,7 @@ bool MainWindow::isVideo(QString fileName){
 
 void MainWindow::playlistNext(){
     playlist->next();
+    qDebug() << "CURRENT INDEX" << playlist->currentIndex();
     if(playlist->currentIndex() == -1){
         playlist->next();
     }
