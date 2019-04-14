@@ -77,7 +77,7 @@ void Playlist::displayPlaylistContent(){
         qDebug() << "GOT HERE 1";
         mediaPlaylist->setCurrentIndex(0);
         //Test to see if viewport works
-        audio = new AudioWindowWidget(parent, mediaPlayer);
+        //audio = new AudioWindowWidget(parent, mediaPlayer);
         qDebug() << "GOT HERE 2";
         //displayPort->setViewport(audio);
         qDebug() << "GOT HERE 3";
@@ -89,13 +89,14 @@ void Playlist::displayPlaylistContent(){
 void Playlist::on_addPlaylistButton_pressed()
 {
     bool valid;
-    QString playlistName = QInputDialog::getText(this, "Playlist Name", "Enter playlist name", QLineEdit::Normal, "", &valid);
-    qDebug() << "Playlist name:" << playlistName << endl;
+    currentPlaylistName = QInputDialog::getText(this, "Playlist Name", "Enter playlist name", QLineEdit::Normal, "", &valid) + ".m3u";
+    qDebug() << "Playlist name:" << currentPlaylistName << endl;
     qDebug() << QDir().absolutePath();
-    QString vidFile = QFileDialog::getOpenFileName(this, "Open Video File", "", "Video File (*.mp3)");
-    mediaPlaylist->addMedia(QUrl::fromLocalFile(vidFile));
-    qDebug() << mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + playlistName + ".m3u"), "m3u");
-    ui->playlistListWidget->addItem(playlistName);
+    QString file = QFileDialog::getOpenFileName(this, "Open Video/Audio File", "", "Video/Audio File (*.mp3 *.mp4)");
+    mediaPlaylist->addMedia(QUrl::fromLocalFile(file));
+    qDebug() << mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
+    ui->playlistListWidget->addItem(currentPlaylistName);
+    mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
 
 }
 
@@ -104,18 +105,18 @@ void Playlist::on_loadPlaylistButton_pressed()
     delete mediaPlaylist;
     mediaPlaylist = new QMediaPlaylist();
     // reading in name after item is selected
-    QString playlistName = "";
+    //QString playlistName = "";
     if(ui->playlistListWidget->currentItem() == nullptr){
         qDebug() << "EMPTY!" << endl;
     }
     else{
         qDebug() << ui->playlistListWidget->currentItem()->text() << endl;
-        playlistName = ui->playlistListWidget->currentItem()->text();
+        currentPlaylistName = ui->playlistListWidget->currentItem()->text();
     }
-    QUrl path = QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + playlistName);
+    QUrl path = QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName);
     qDebug() << path;
     // load in playlist
-    mediaPlaylist->load(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + playlistName), "m3u");
+    mediaPlaylist->load(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
 
 
     // then display all the content within the playlist
@@ -127,4 +128,42 @@ void Playlist::on_loadPlaylistButton_pressed()
 
     emit playlistLoaded();
 
+}
+
+bool Playlist::empty(){
+    return !(mediaPlaylist->mediaCount() > 0);
+}
+
+void Playlist::on_addContentButton_pressed()
+{
+    qDebug() << "GOT HERE TO ADD CONTENT" << mediaPlaylist->mediaCount();
+
+    if(!empty()){
+
+        QString file = QFileDialog::getOpenFileName(this, "Open Video/Audio File", "", "Video/Audio File (*.mp3 *.mp4)");
+        mediaPlaylist->addMedia(QUrl::fromLocalFile(file));
+        QStringList splitFile = file.split("/");
+        file = splitFile[splitFile.length() - 1];
+        ui->contentListWidget->addItem(file);
+        mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
+    }
+}
+
+int Playlist::currentIndex(){
+    return mediaPlaylist->currentIndex();
+}
+
+void Playlist::on_deleteContentButton_pressed()
+{
+    if(ui->contentListWidget->currentItem() == nullptr){
+        qDebug() << "NOTHING SELECTED FOR DELETION" << endl;
+    }
+    else{
+        qDebug() << "BEFORE DELETION" << mediaPlaylist->mediaCount();
+        int index = ui->contentListWidget->currentRow();
+        mediaPlaylist->removeMedia(index);
+        ui->contentListWidget->takeItem(index);
+        mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
+        qDebug() << "AFTER DELETION" << mediaPlaylist->mediaCount();
+    }
 }

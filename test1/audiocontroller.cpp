@@ -30,5 +30,4 @@ void AudioController::stop(){
 }
 
 AudioController::~AudioController(){
-    delete mediaPlayer;
 }

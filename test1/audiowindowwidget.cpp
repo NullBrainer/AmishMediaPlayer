@@ -16,7 +16,6 @@ AudioWindowWidget::AudioWindowWidget(QWidget *parent, QMediaPlayer *mediaPlayer)
 AudioWindowWidget::~AudioWindowWidget()
 {
     delete ui;
-    delete AudioController;
 }
 
 void AudioWindowWidget::changeFile(QString fileName){

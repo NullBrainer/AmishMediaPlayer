@@ -28,5 +28,4 @@ void VideoController::stop(){
 }
 
 VideoController::~VideoController(){
-    delete mediaPlayer;
 }

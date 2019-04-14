@@ -20,7 +20,7 @@ void VideoControllerWidget::changeVideo(QString videoFile){
 /*A function call unique to controllerwidgets, used to return the desired RenderStrategy*/
 VideoWindowRender* VideoControllerWidget::MakeWindow()
 {
-return new VideoWindowRender();
+    return new VideoWindowRender();
 }
 
 VideoControllerWidget::~VideoControllerWidget()

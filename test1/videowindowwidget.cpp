@@ -32,7 +32,6 @@ VideoWindowWidget::~VideoWindowWidget()
 {
     delete ui;
     // delete rendermethod;
-    delete VidController;
 }
 
 void VideoWindowWidget::changeFile(QString fileName){

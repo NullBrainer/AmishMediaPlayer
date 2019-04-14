@@ -35,6 +35,10 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete mediaPlayer;
+    delete Audio;
+    delete Video;
+    delete playlist;
 }
 
 void MainWindow::on_chooseVideoPlayer_pressed()
@@ -104,6 +108,10 @@ bool MainWindow::isVideo(QString fileName){
 
 void MainWindow::playlistNext(){
     playlist->next();
+    if(playlist->currentIndex() == -1){
+        playlist->next();
+    }
+
     qDebug("PLAYLIST MOVE FORWARD");
     checkPlaylistAndChange();
 }

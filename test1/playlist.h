@@ -25,6 +25,8 @@ public:
     QString currentFileName();
     void next();
     void previous();
+    bool empty();
+    int currentIndex();
 
 signals:
     void playlistLoaded();
@@ -34,6 +36,10 @@ private slots:
 
     void on_loadPlaylistButton_pressed();
 
+    void on_addContentButton_pressed();
+
+    void on_deleteContentButton_pressed();
+
 private:
     Ui::Playlist *ui;
     QMediaPlaylist * mediaPlaylist;
@@ -41,6 +47,7 @@ private:
     QGraphicsView * displayPort;
     QWidget * parent;
     AudioWindowWidget * audio; // test
+    QString currentPlaylistName;
 };
 
 #endif // PLAYLIST_H
