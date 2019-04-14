@@ -57,3 +57,13 @@ void VideoControllerWidget::on_StopButton_pressed()
 {
     this->VideoControllerWidget::on_actionStop_triggered();
 }
+
+void VideoControllerWidget::on_NextButton_pressed()
+{
+    emit orderAdvanced();
+}
+
+void VideoControllerWidget::on_PreviousButton_pressed()
+{
+    emit orderPrevious();
+}

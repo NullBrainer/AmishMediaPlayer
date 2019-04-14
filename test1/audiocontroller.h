@@ -12,6 +12,7 @@ public:
     virtual void stop();
     virtual void change(QString);
     virtual ~AudioController();
+
 private:
     QMediaPlayer* mediaPlayer;
 };

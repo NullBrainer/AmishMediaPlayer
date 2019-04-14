@@ -21,9 +21,14 @@ class VideoWindowWidget : public QWidget
 public:
     VideoWindowWidget(QWidget *parent = nullptr, QMediaPlayer *mediaPlayer = nullptr);
     ~VideoWindowWidget();
-
+    void changeFile(QString);
+signals:
+    void orderPushedForward();
+    void orderPushedBackward();
 private slots:
     void on_FileButton_pressed();
+    void orderAdvanced();
+    void orderPrevious();
 public slots:
     void on_actiononMediaSwitch_triggered();
 

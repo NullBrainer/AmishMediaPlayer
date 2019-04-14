@@ -53,3 +53,13 @@ void AudioControllerWidget::on_StopButton_pressed()
 {
     this->AudioControllerWidget::on_actionStop_triggered();
 }
+
+void AudioControllerWidget::on_NextButton_pressed()
+{
+    emit orderAdvanced();
+}
+
+void AudioControllerWidget::on_PreviousButton_pressed()
+{
+    emit orderPrevious();
+}

@@ -15,9 +15,14 @@ class AudioWindowWidget : public QWidget
 public:
     explicit AudioWindowWidget(QWidget *parent = nullptr, QMediaPlayer * mediaPlayer = nullptr);
     ~AudioWindowWidget();
-
+    void changeFile(QString);
+signals:
+    void orderPushedForward();
+    void orderPushedBackward();
 private slots:
     void on_FileButton_pressed();
+    void orderAdvanced();
+    void orderPrevious();
 public slots:
     void on_actiononMediaSwitch_triggered();
 

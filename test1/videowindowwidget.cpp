@@ -14,6 +14,18 @@ VideoWindowWidget::VideoWindowWidget(QWidget *parent, QMediaPlayer *mediaPlayer)
     VidController = new VideoControllerWidget(ui->ButtonController, videoWidget, this->mediaPlayer);
     ui->DisplayView->setViewport(videoWidget);
     ui->ButtonController->setViewport(VidController);
+    connect(VidController, SIGNAL(orderAdvanced()), this, SLOT(orderAdvanced()));
+    connect(VidController, SIGNAL(orderPrevious()), this, SLOT(orderPrevious()));
+}
+
+void VideoWindowWidget::orderAdvanced(){
+    emit orderPushedForward();
+    qDebug("VIDEO MOVE FORWARD");
+}
+
+void VideoWindowWidget::orderPrevious(){
+    emit orderPushedBackward();
+    qDebug("VIDEO MOVE BACKWARD");
 }
 
 VideoWindowWidget::~VideoWindowWidget()
@@ -21,6 +33,10 @@ VideoWindowWidget::~VideoWindowWidget()
     delete ui;
     // delete rendermethod;
     delete VidController;
+}
+
+void VideoWindowWidget::changeFile(QString fileName){
+    VidController->changeVideo(fileName);
 }
 
 void VideoWindowWidget::on_FileButton_pressed()
@@ -32,4 +48,5 @@ void VideoWindowWidget::on_FileButton_pressed()
 void VideoWindowWidget::on_actiononMediaSwitch_triggered()
 {
     VidController->on_actionStop_triggered();
+
 }

@@ -23,19 +23,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="FileButton">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>60</y>
-     <width>71</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>File</string>
-   </property>
-  </widget>
   <action name="actiononMediaSwitch">
    <property name="text">
     <string>onMediaSwitch</string>

@@ -7,9 +7,13 @@ VideoController::VideoController(QVideoWidget* vw, QMediaPlayer * mediaPlayer):v
 }
 void VideoController::change(QString videoFile){
     mediaPlayer->stop();
+    if(videoFile.startsWith("file:///")){
+        videoFile = videoFile.remove(0,8);
+    }
     mediaPlayer->setMedia(QUrl::fromLocalFile(videoFile));
     // For testing reasons, play
     mediaPlayer->play();
+
 }
 void VideoController::play(){
     mediaPlayer->play();

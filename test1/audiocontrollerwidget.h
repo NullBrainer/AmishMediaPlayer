@@ -19,7 +19,11 @@ public:
     void changeAudio(QString);
     ~AudioControllerWidget();
 
+signals:
+    void orderAdvanced();
+    void orderPrevious();
 public slots:
+
     void on_actionPlay_triggered();
 
     void on_actionPause_triggered();
@@ -32,6 +36,10 @@ private slots:
     void on_PauseButton_pressed();
 
     void on_StopButton_pressed();
+
+    void on_NextButton_pressed();
+
+    void on_PreviousButton_pressed();
 
 private:
     Ui::AudioControllerWidget *ui;

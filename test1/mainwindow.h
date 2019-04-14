@@ -5,6 +5,8 @@
 #include "audiowindowwidget.h"
 #include "videowindowwidget.h"
 #include "playlist.h"
+#include <QVector>
+#include <string>
 namespace Ui {
 class MainWindow;
 }
@@ -20,19 +22,28 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    bool isVideo(QString);
+    void loadVideoPlayer();
+    void loadAudioPlayer();
 private slots:
 
+    void playlistNext();
+    void playlistPrevious();
 
     void on_chooseVideoPlayer_pressed();
 
     void on_chooseAudioPlayer_pressed();
+
+    void on_fileButton_pressed();
+
+    void playlistLoaded();
 
 private:
     Ui::MainWindow *ui;
     QMediaPlayer * mediaPlayer;
     VideoWindowWidget* Video;
     AudioWindowWidget* Audio;
+    Playlist * playlist;
 };
 
 #endif // MAINWINDOW_H

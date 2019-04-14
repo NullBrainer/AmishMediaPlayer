@@ -6,7 +6,13 @@ AudioController::AudioController(QMediaPlayer * mediaPlayer)
 }
 
 void AudioController::change(QString audioFile){
+    qDebug() << audioFile;
+    if(audioFile.startsWith("file:///")){
+        audioFile = audioFile.remove(0,8);
+    }
+    qDebug() << "AFTER" << audioFile;
     mediaPlayer->setMedia(QUrl::fromLocalFile(audioFile));
+    qDebug() << QUrl::fromLocalFile(audioFile);
     // For testing reasons, play
     mediaPlayer->play();
 }
