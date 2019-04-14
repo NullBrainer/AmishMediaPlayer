@@ -42,6 +42,8 @@ private slots:
 
     void on_deletePlaylistButton_pressed();
 
+    void on_ShuffleButton_pressed();
+
 private:
     Ui::Playlist *ui;
     QMediaPlaylist * mediaPlaylist;
@@ -50,6 +52,7 @@ private:
     QWidget * parent;
     AudioWindowWidget * audio; // test
     QString currentPlaylistName;
+    bool shuffleToggle;
 };
 
 #endif // PLAYLIST_H

@@ -9,22 +9,11 @@ Playlist::Playlist(QWidget *parent) :
 
     ui->setupUi(this);
     this->parent = parent;
-    this->mediaPlayer = mediaPlayer;
-    this->displayPort = displayPort;
-    audio = nullptr; // test
     mediaPlaylist = new QMediaPlaylist();
-
+    shuffleToggle = false;
+    ui->ShuffleButton->setStyleSheet("background-color:blue");
     // Display playlists
 
-
-
-    // Listwidget testing
-    /*
-    for(int i = 0; i < 80; i++){
-        ui->listWidget->addItem(QString::number(i) + "lasdjfilsadjflasjflksajflksadjflsajflsjaflsjdf");
-
-    }
-    */
 
     //Check if playlist folder exists
     if(QDir("Playlists").exists()){
@@ -55,7 +44,12 @@ QString Playlist::currentFileName(){
 }
 
 void Playlist::next(){
-    mediaPlaylist->next();
+    if(shuffleToggle){
+        mediaPlaylist->setCurrentIndex(rand() % mediaPlaylist->mediaCount());
+    }
+    else{
+        mediaPlaylist->next();
+    }
 }
 
 void Playlist::previous(){
@@ -89,6 +83,7 @@ void Playlist::displayPlaylistContent(){
 void Playlist::on_addPlaylistButton_pressed()
 {
     bool valid;
+    shuffleToggle = false;
     currentPlaylistName = QInputDialog::getText(this, "Playlist Name", "Enter playlist name", QLineEdit::Normal, "", &valid) + ".m3u";
     qDebug() << "Playlist name:" << currentPlaylistName << endl;
     qDebug() << QDir().absolutePath();
@@ -176,5 +171,16 @@ void Playlist::on_deletePlaylistButton_pressed()
     if(ui->playlistListWidget->currentItem() != nullptr){
         QDir().remove("Playlists/" + ui->playlistListWidget->currentItem()->text());
         ui->playlistListWidget->takeItem(ui->playlistListWidget->currentRow());
+    }
+}
+
+void Playlist::on_ShuffleButton_pressed()
+{
+    shuffleToggle = !shuffleToggle;
+    if(shuffleToggle){
+        ui->ShuffleButton->setStyleSheet("background-color:pink");
+    }
+    else{
+        ui->ShuffleButton->setStyleSheet("background-color:white");
     }
 }
