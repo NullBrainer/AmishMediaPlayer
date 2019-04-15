@@ -24,9 +24,9 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="StopButton">
+     <widget class="QPushButton" name="PlayButton">
       <property name="text">
-       <string>Stop</string>
+       <string>Play</string>
       </property>
      </widget>
     </item>
@@ -38,16 +38,9 @@
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="PlayButton">
+     <widget class="QPushButton" name="StopButton">
       <property name="text">
-       <string>Play</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="NextButton">
-      <property name="text">
-       <string>Next</string>
+       <string>Stop</string>
       </property>
      </widget>
     </item>
@@ -55,6 +48,13 @@
      <widget class="QPushButton" name="PreviousButton">
       <property name="text">
        <string>Previous</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="NextButton">
+      <property name="text">
+       <string>Next</string>
       </property>
      </widget>
     </item>

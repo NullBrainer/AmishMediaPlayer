@@ -84,3 +84,8 @@ void VideoControllerWidget::on_dial_valueChanged(int value)
 {
     mediaPlayer->setVolume(value);
 }
+
+void VideoControllerWidget::on_SeekerSlider_sliderMoved(int position)
+{
+    mediaPlayer->setPosition(position);
+}

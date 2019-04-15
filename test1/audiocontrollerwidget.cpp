@@ -83,3 +83,8 @@ void AudioControllerWidget::on_dial_valueChanged(int value)
 {
     mediaPlayer->setVolume(value);
 }
+
+void AudioControllerWidget::on_SeekerSlider_sliderMoved(int position)
+{
+    mediaPlayer->setPosition(position);
+}

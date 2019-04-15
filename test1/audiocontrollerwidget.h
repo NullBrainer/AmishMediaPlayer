@@ -46,6 +46,8 @@ private slots:
 
     void on_dial_valueChanged(int value);
 
+    void on_SeekerSlider_sliderMoved(int position);
+
 private:
     Ui::AudioControllerWidget *ui;
     IController * audioController;
