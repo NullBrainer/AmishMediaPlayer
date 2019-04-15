@@ -52,10 +52,12 @@ private slots:
 
     void on_SeekerSlider_sliderMoved(int position);
 
+
 private:
     Ui::VideoControllerWidget *ui;
     IController * videoController;
     QMediaPlayer * mediaPlayer;
+    QVideoWidget * vw;
 };
 
 #endif // VIDEOCONTROLLERWIDGET_H

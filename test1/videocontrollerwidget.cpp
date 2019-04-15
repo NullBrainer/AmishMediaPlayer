@@ -6,6 +6,7 @@ VideoControllerWidget::VideoControllerWidget(QWidget *parent, QVideoWidget* vw, 
 {
     ui->setupUi(this);
     this->mediaPlayer = mediaPlayer;
+    this->vw = vw;
     videoController = new VideoController(vw, this->mediaPlayer);
     // For testing purposes
     /*QString videoFileName = QFileDialog::getOpenFileName(parent, "Open Video File", "", "Video File (*.mp4)");
@@ -89,3 +90,4 @@ void VideoControllerWidget::on_SeekerSlider_sliderMoved(int position)
 {
     mediaPlayer->setPosition(position);
 }
+
