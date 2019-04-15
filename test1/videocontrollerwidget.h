@@ -45,6 +45,10 @@ private slots:
     void on_NextButton_pressed();
 
     void on_PreviousButton_pressed();
+    void moveSeeker(qint64 pos);
+    void adjustMax(qint64 max);
+
+    void on_dial_valueChanged(int value);
 
 private:
     Ui::VideoControllerWidget *ui;

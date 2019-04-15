@@ -10,6 +10,8 @@ VideoControllerWidget::VideoControllerWidget(QWidget *parent, QVideoWidget* vw, 
     // For testing purposes
     /*QString videoFileName = QFileDialog::getOpenFileName(parent, "Open Video File", "", "Video File (*.mp4)");
     this->changeVideo(videoFileName);*/
+    connect(mediaPlayer, SIGNAL(positionChanged(qint64)), this, SLOT(moveSeeker(qint64)));
+    connect(mediaPlayer, SIGNAL(durationChanged(qint64)), this, SLOT(adjustMax(qint64)));
 }
 
 void VideoControllerWidget::changeVideo(QString videoFile){
@@ -66,4 +68,19 @@ void VideoControllerWidget::on_NextButton_pressed()
 void VideoControllerWidget::on_PreviousButton_pressed()
 {
     emit orderPrevious();
+}
+
+void VideoControllerWidget::moveSeeker(qint64 pos){
+    ui->SeekerSlider->setValue(pos);
+    QTime displayTime(0, (pos / 60000) % 60, (pos / 1000) % 60);
+    ui->timeDisplay->setText(displayTime.toString("mm:ss"));
+}
+
+void VideoControllerWidget::adjustMax(qint64 max){
+    ui->SeekerSlider->setMaximum(max);
+}
+
+void VideoControllerWidget::on_dial_valueChanged(int value)
+{
+    mediaPlayer->setVolume(value);
 }
