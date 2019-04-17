@@ -30,8 +30,12 @@ public:
 
 signals:
     void playlistLoaded();
+    void contentDoubleClicked();
+
 
 private slots:
+    void changeAudioToCurrent();
+
     void on_addPlaylistButton_pressed();
 
     void on_loadPlaylistButton_pressed();
@@ -53,6 +57,7 @@ private:
     AudioWindowWidget * audio; // test
     QString currentPlaylistName;
     bool shuffleToggle;
+    void updateTitle(QString);
 };
 
 #endif // PLAYLIST_H

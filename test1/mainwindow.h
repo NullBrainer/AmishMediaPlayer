@@ -39,6 +39,8 @@ private slots:
 
     void playlistLoaded();
 
+    void audioDoubleClick();
+
 private:
     Ui::MainWindow *ui;
     QMediaPlayer * mediaPlayer;

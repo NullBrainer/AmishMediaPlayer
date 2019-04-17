@@ -25,7 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->playlistDisplay->setViewport(playlist);
 
     connect(playlist, SIGNAL(playlistLoaded()), this, SLOT(playlistLoaded()));
-
+    connect(playlist, SIGNAL(contentDoubleClicked()),
+            this, SLOT(audioDoubleClick()));
 
 
 
@@ -134,5 +135,9 @@ void MainWindow::checkPlaylistAndChange(){
     }
 }
 
+void MainWindow::audioDoubleClick(){
+    qDebug() << "CONTENT DOUBLE CLICKED";
+    checkPlaylistAndChange();
+}
 
 

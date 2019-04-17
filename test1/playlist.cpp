@@ -28,6 +28,11 @@ Playlist::Playlist(QWidget *parent) :
     for(QString s : files){
         ui->playlistListWidget->addItem(s);
     }
+
+    connect(ui->contentListWidget,
+            SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+            this,
+            SLOT(changeAudioToCurrent()));
 }
 
 Playlist::~Playlist()
@@ -81,6 +86,7 @@ void Playlist::displayPlaylistContent(){
 
 void Playlist::on_addPlaylistButton_pressed()
 {
+    mediaPlaylist->clear();
     bool valid;
     shuffleToggle = false;
     currentPlaylistName = QInputDialog::getText(this, "Playlist Name", "Enter playlist name", QLineEdit::Normal, "", &valid) + ".m3u";
@@ -97,6 +103,7 @@ void Playlist::on_addPlaylistButton_pressed()
 
 
     displayPlaylistContent();
+    updateTitle(currentPlaylistName);
     qDebug() << "CURRENT INDEX RIGHT AFTER CREATING: " << mediaPlaylist->currentIndex();
     emit playlistLoaded();
 
@@ -127,6 +134,8 @@ void Playlist::on_loadPlaylistButton_pressed()
 
     mediaPlaylist->next(); // Playlist starts at -1, so have to increment by one
     displayPlaylistContent();
+
+    updateTitle(currentPlaylistName);
 
     emit playlistLoaded();
 
@@ -187,4 +196,13 @@ void Playlist::on_ShuffleButton_pressed()
     else{
         ui->ShuffleButton->setStyleSheet("background-color:white");
     }
+}
+
+void Playlist::changeAudioToCurrent(){
+    mediaPlaylist->setCurrentIndex(ui->contentListWidget->currentRow());
+    emit contentDoubleClicked();
+}
+
+void Playlist::updateTitle(QString title){
+    ui->ContentLabel->setText(title);
 }
