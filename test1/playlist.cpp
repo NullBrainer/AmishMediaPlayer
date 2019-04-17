@@ -70,8 +70,7 @@ void Playlist::displayPlaylistContent(){
     if(ui->contentListWidget->count() != 0){
         qDebug() << "GOT HERE 1";
         mediaPlaylist->setCurrentIndex(0);
-        //Test to see if viewport works
-        //audio = new AudioWindowWidget(parent, mediaPlayer);
+
         qDebug() << "GOT HERE 2";
         //displayPort->setViewport(audio);
         qDebug() << "GOT HERE 3";
@@ -93,8 +92,13 @@ void Playlist::on_addPlaylistButton_pressed()
     ui->playlistListWidget->addItem(currentPlaylistName);
     mediaPlaylist->save(QUrl::fromLocalFile(QDir().absolutePath() + "/Playlists/" + currentPlaylistName), "m3u");
     mediaPlaylist->next();
+
+    // load the current playlist
+
+
     displayPlaylistContent();
     qDebug() << "CURRENT INDEX RIGHT AFTER CREATING: " << mediaPlaylist->currentIndex();
+    emit playlistLoaded();
 
 }
 
