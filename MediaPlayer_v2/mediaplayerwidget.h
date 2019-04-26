@@ -2,6 +2,9 @@
 #define MEDIAPLAYERWIDGET_H
 
 #include <QWidget>
+#include <QVideoWidget>
+#include <QMediaPlayer>
+#include "controllerwidget.h"
 
 namespace Ui {
 class MediaPlayerWidget;
@@ -17,6 +20,9 @@ public:
 
 private:
     Ui::MediaPlayerWidget *ui;
+    ControllerWidget * controllerWidget;
+    QVideoWidget * vw;
+    QMediaPlayer * mp;
 };
 
 #endif // MEDIAPLAYERWIDGET_H
