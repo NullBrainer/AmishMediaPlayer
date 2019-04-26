@@ -5,6 +5,13 @@
 #include <QVideoWidget>
 #include <QMediaPlayer>
 #include "controllerwidget.h"
+#include "audiocontrollerstrategy.h"
+
+/*
+ * MEDIATOR
+ * Handles interaction between the controller,
+ * media player, and playlist widgets
+ * */
 
 namespace Ui {
 class MediaPlayerWidget;

@@ -17,6 +17,7 @@ class ControllerWidget : public QWidget
 public:
     explicit ControllerWidget(QWidget *parent = nullptr);
     void setStrategy(ControllerStrategy*);
+    void setMediaPlayer(QMediaPlayer *);
 
     ~ControllerWidget();
 
@@ -24,9 +25,17 @@ public slots:
     void moveSlider(qint64 pos);
     void adjustSliderMax(qint64 max);
 
+private slots:
+    void on_playButton_pressed();
+
+    void on_pauseButton_pressed();
+
+    void on_stopButton_pressed();
+
 private:
     Ui::ControllerWidget *ui;
     ControllerStrategy * controllerStrat;
+    QMediaPlayer * mp;
 
 };
 

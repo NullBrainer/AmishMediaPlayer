@@ -1,5 +1,6 @@
 #ifndef AUDIOCONTROLLERSTRATEGY_H
 #define AUDIOCONTROLLERSTRATEGY_H
+#include <QDebug>
 #include "controllerstrategy.h"
 
 class AudioControllerStrategy : public ControllerStrategy

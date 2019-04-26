@@ -11,10 +11,15 @@ ControllerWidget::ControllerWidget(QWidget *parent) :
 ControllerWidget::~ControllerWidget()
 {
     delete ui;
+    delete controllerStrat;
 }
 
 void ControllerWidget::setStrategy(ControllerStrategy * cs){
     this->controllerStrat = cs;
+}
+
+void ControllerWidget::setMediaPlayer(QMediaPlayer * mediaPlayer){
+    this->mp = mediaPlayer;
 }
 
 void ControllerWidget::moveSlider(qint64 pos){
@@ -25,4 +30,19 @@ void ControllerWidget::moveSlider(qint64 pos){
 
 void ControllerWidget::adjustSliderMax(qint64 max){
     ui->durationSlider->setMaximum(max);
+}
+
+void ControllerWidget::on_playButton_pressed()
+{
+    controllerStrat->play(mp);
+}
+
+void ControllerWidget::on_pauseButton_pressed()
+{
+    controllerStrat->pause(mp);
+}
+
+void ControllerWidget::on_stopButton_pressed()
+{
+    controllerStrat->stop(mp);
 }

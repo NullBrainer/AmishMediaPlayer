@@ -11,6 +11,8 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
     mp = new QMediaPlayer(this);
     controllerWidget = new ControllerWidget(this);
 
+    controllerWidget->setMediaPlayer(mp);
+    controllerWidget->setStrategy(new AudioControllerStrategy()); // TEST STATEMENT
     ui->controllerView->setViewport(controllerWidget);
     ui->mediaDisplayView->setViewport(vw);
     mp->setVideoOutput(vw);
