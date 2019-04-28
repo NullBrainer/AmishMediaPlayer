@@ -30,7 +30,9 @@ SOURCES += \
     mediaplayerwidget.cpp \
     controllerwidget.cpp \
     audiocontrollerstrategy.cpp \
-    videocontrollerstrategy.cpp
+    videocontrollerstrategy.cpp \
+    mediahandler.cpp \
+    audiohandler.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,7 +40,9 @@ HEADERS += \
     controllerwidget.h \
     controllerstrategy.h \
     audiocontrollerstrategy.h \
-    videocontrollerstrategy.h
+    videocontrollerstrategy.h \
+    mediahandler.h \
+    audiohandler.h
 
 FORMS += \
         mainwindow.ui \

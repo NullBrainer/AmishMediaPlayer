@@ -12,7 +12,10 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
     controllerWidget = new ControllerWidget(this);
 
     controllerWidget->setMediaPlayer(mp);
+
+    // TESTING PURPOSES
     controllerWidget->setStrategy(new AudioControllerStrategy()); // TEST STATEMENT
+
     ui->controllerView->setViewport(controllerWidget);
     ui->mediaDisplayView->setViewport(vw);
     mp->setVideoOutput(vw);
@@ -22,6 +25,11 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
     connect(mp, SIGNAL(durationChanged(qint64)), controllerWidget, SLOT(adjustSliderMax(qint64)));
 
 
+}
+
+void MediaPlayerWidget::setMedia(QString media){
+    mp->setMedia(QUrl::fromLocalFile(media));
+    qDebug() << "MEDIA SET: " << media;
 }
 
 MediaPlayerWidget::~MediaPlayerWidget()
