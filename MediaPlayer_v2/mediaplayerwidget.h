@@ -6,6 +6,7 @@
 #include <QMediaPlayer>
 #include "controllerwidget.h"
 #include "audiocontrollerstrategy.h"
+#include "videocontrollerstrategy.h"
 
 /*
  * MEDIATOR

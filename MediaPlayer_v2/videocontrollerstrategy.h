@@ -7,10 +7,10 @@ class VideoControllerStrategy : public ControllerStrategy
 public:
     VideoControllerStrategy() = default;
     virtual void play(QMediaPlayer*);
-    virtual void pause(QMediaPlayer*) = 0;
-    virtual void stop(QMediaPlayer*) = 0;
-    virtual void setVolume(int, QMediaPlayer*) = 0;
-    virtual void seek(int, QMediaPlayer*) = 0;
+    virtual void pause(QMediaPlayer*);
+    virtual void stop(QMediaPlayer*);
+    virtual void setVolume(int, QMediaPlayer*);
+    virtual void seek(int, QMediaPlayer*);
 
     virtual ~VideoControllerStrategy() = default;
 };

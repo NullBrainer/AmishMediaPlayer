@@ -14,7 +14,7 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
     controllerWidget->setMediaPlayer(mp);
 
     // TESTING PURPOSES
-    controllerWidget->setStrategy(new AudioControllerStrategy()); // TEST STATEMENT
+    controllerWidget->setStrategy(new VideoControllerStrategy()); // TEST STATEMENT
 
     ui->controllerView->setViewport(controllerWidget);
     ui->mediaDisplayView->setViewport(vw);

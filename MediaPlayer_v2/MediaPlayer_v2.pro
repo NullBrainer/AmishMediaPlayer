@@ -32,7 +32,8 @@ SOURCES += \
     audiocontrollerstrategy.cpp \
     videocontrollerstrategy.cpp \
     mediahandler.cpp \
-    audiohandler.cpp
+    audiohandler.cpp \
+    videohandler.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -42,7 +43,8 @@ HEADERS += \
     audiocontrollerstrategy.h \
     videocontrollerstrategy.h \
     mediahandler.h \
-    audiohandler.h
+    audiohandler.h \
+    videohandler.h
 
 FORMS += \
         mainwindow.ui \
