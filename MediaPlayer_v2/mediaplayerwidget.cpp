@@ -9,15 +9,17 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
 
     vw = new QVideoWidget(this);
     mp = new QMediaPlayer(this);
+    playlistWidget = new PlaylistWidget(this);
     controllerWidget = new ControllerWidget(this);
 
     controllerWidget->setMediaPlayer(mp);
-
+    buildChain();
     // TESTING PURPOSES
-    controllerWidget->setStrategy(new VideoControllerStrategy()); // TEST STATEMENT
+    //controllerWidget->setStrategy(new VideoControllerStrategy()); // TEST STATEMENT
 
     ui->controllerView->setViewport(controllerWidget);
     ui->mediaDisplayView->setViewport(vw);
+    ui->playlistView->setViewport(playlistWidget);
     mp->setVideoOutput(vw);
 
 
@@ -38,4 +40,20 @@ MediaPlayerWidget::~MediaPlayerWidget()
     delete vw;
     delete mp;
     delete controllerWidget;
+}
+
+void MediaPlayerWidget::on_pushButton_pressed()
+{
+    QString filename = QFileDialog::getOpenFileName(this, "Open media file", "", "Audio/Video (*.mp4 *mp3)");
+    mp->setMedia(QUrl::fromLocalFile(filename));
+    chooseStrategy(filename);
+}
+
+void MediaPlayerWidget::buildChain(){
+    handler = new AudioHandler();
+    handler->addHandler(new VideoHandler());
+}
+
+void MediaPlayerWidget::chooseStrategy(QString filename){
+    controllerWidget->setStrategy(handler->determineController(filename));
 }

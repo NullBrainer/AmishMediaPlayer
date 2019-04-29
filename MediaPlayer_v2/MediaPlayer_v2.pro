@@ -33,7 +33,8 @@ SOURCES += \
     videocontrollerstrategy.cpp \
     mediahandler.cpp \
     audiohandler.cpp \
-    videohandler.cpp
+    videohandler.cpp \
+    playlistwidget.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -44,12 +45,14 @@ HEADERS += \
     videocontrollerstrategy.h \
     mediahandler.h \
     audiohandler.h \
-    videohandler.h
+    videohandler.h \
+    playlistwidget.h
 
 FORMS += \
         mainwindow.ui \
     mediaplayerwidget.ui \
-    controllerwidget.ui
+    controllerwidget.ui \
+    playlistwidget.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -19,6 +19,7 @@ void MediaHandler::setNext(MediaHandler * handler){
 }
 
 void MediaHandler::addHandler(MediaHandler * handler){
+    qDebug() << "GOT HERE!!!";
     if(nextHandler != nullptr){
         nextHandler->addHandler(handler);
     }

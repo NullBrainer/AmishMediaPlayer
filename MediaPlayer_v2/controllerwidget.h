@@ -36,7 +36,6 @@ private:
     Ui::ControllerWidget *ui;
     ControllerStrategy * controllerStrat;
     QMediaPlayer * mp;
-
 };
 
 #endif // CONTROLLERWIDGET_H
