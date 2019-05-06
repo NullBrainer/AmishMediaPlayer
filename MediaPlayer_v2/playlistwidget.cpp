@@ -87,6 +87,14 @@ void PlaylistWidget::loadPlaylist(QString filepath){
     mediaPlaylist->load(QUrl::fromLocalFile(filepath), "m3u");
 }
 
+void PlaylistWidget::addContent(QString filepath){
+    mediaPlaylist->addMedia(QUrl::fromLocalFile(filepath));
+}
+
+bool PlaylistWidget::empty(){
+    return !(mediaPlaylist->mediaCount() > 0);
+}
+
 void PlaylistWidget::on_addPlaylistButton_pressed()
 {
     addPlaylist();
@@ -114,4 +122,16 @@ void PlaylistWidget::on_loadPlaylistButton_pressed()
     mediaPlaylist->next();
     displayPlaylistContent();
     updateTitle(currentPlaylistName);
+}
+
+void PlaylistWidget::on_addContentButton_pressed()
+{
+    if(!empty()){
+        QString file = QFileDialog::getOpenFileName(this, "Open Video/Audio File", "", "Video/Audio File (*.mp3 *.mp4)");
+        addContent(file);
+        QStringList splitFile = file.split("/");
+        file = splitFile[splitFile.length() - 1];
+        ui->contentListWidget->addItem(file);
+        mediaPlaylist->save(QUrl::fromLocalFile(BASE_PATH + currentPlaylistName), "m3u");
+    }
 }

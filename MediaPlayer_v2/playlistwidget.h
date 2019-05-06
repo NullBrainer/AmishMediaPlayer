@@ -27,6 +27,8 @@ public:
     void addPlaylist();
     void deletePlaylist(QString);
     void loadPlaylist(QString);
+    void addContent(QString);
+    bool empty();
 
 private slots:
     void on_addPlaylistButton_pressed();
@@ -34,6 +36,8 @@ private slots:
     void on_deletePlaylistButton_pressed();
 
     void on_loadPlaylistButton_pressed();
+
+    void on_addContentButton_pressed();
 
 private:
     Ui::PlaylistWidget *ui;
