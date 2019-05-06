@@ -3,6 +3,9 @@
 
 #include <QWidget>
 #include <QMediaPlaylist>
+#include <QDir>
+#include <QInputDialog>
+#include <QFileDialog>
 
 namespace Ui {
 class PlaylistWidget;
@@ -16,8 +19,22 @@ public:
     explicit PlaylistWidget(QWidget *parent = nullptr);
     ~PlaylistWidget();
 
+    void next();
+    void previous();
+    void displayPlaylists();
+    void displayPlaylistContent();
+    void updateTitle(QString);
+    void addPlaylist();
+
+private slots:
+    void on_addPlaylistButton_pressed();
+
 private:
     Ui::PlaylistWidget *ui;
+    const QString PLAYLIST_PATHNAME = "Playlists";
+    QMediaPlaylist * mediaPlaylist;
+    QString currentPlaylistName;
+    const QString BASE_PATH = QDir().absolutePath() + "/Playlists/";
 };
 
 #endif // PLAYLISTWIDGET_H
