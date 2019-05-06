@@ -63,6 +63,7 @@ void MediaPlayerWidget::buildChain(){
 
 void MediaPlayerWidget::chooseStrategy(QString filename){
     controllerWidget->setStrategy(handler->determineController(filename));
+    controllerWidget->playNewMedia();
 }
 
 void MediaPlayerWidget::onNext(){

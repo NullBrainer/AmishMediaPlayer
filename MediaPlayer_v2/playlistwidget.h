@@ -21,6 +21,7 @@ public:
     explicit PlaylistWidget(QWidget *parent = nullptr);
     ~PlaylistWidget();
 
+    bool shuffleToggle;
     void next();
     void previous();
     void displayPlaylists();
@@ -36,11 +37,10 @@ public:
     bool empty();
 
 signals:
-
     void nextContentLoaded();
 
 public slots:
-
+    void doubleClicked();
     void nextPressed();
     void previousPressed();
 
@@ -54,6 +54,8 @@ private slots:
     void on_addContentButton_pressed();
 
     void on_deleteContentButton_pressed();
+
+    void on_shuffleButton_pressed();
 
 private:
     Ui::PlaylistWidget *ui;

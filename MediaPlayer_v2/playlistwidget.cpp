@@ -8,7 +8,8 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     ui->setupUi(this);
     buttonSetup();
     mediaPlaylist = new QMediaPlaylist();
-
+    shuffleToggle = false;
+    ui->shuffleButton->setStyleSheet("background-color:rgba(0,0,0,0.0)");
     // Check if playlist folder exists
     if(QDir(PLAYLIST_PATHNAME).exists()){
         qDebug() << "FOLDER EXISTS";
@@ -18,6 +19,10 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     }
 
     displayPlaylists();
+
+    connect(ui->contentListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+            this,
+            SLOT(doubleClicked()));
 }
 
 PlaylistWidget::~PlaylistWidget()
@@ -26,7 +31,15 @@ PlaylistWidget::~PlaylistWidget()
 }
 
 void PlaylistWidget::next(){
-    mediaPlaylist->next();
+    if(!shuffleToggle){
+        mediaPlaylist->next();
+    }
+    else{
+        int lastIndex = mediaPlaylist->currentIndex();
+        do{
+            mediaPlaylist->setCurrentIndex(rand() % mediaPlaylist->mediaCount());
+        } while(lastIndex == mediaPlaylist->currentIndex());
+    }
     qDebug() << "CURRENT INDEX: " << mediaPlaylist->currentIndex();
     currentSongPath = mediaPlaylist->currentMedia().canonicalUrl().toString();
     qDebug() << "CURRENT SONG PATH: " << currentSongPath;
@@ -198,4 +211,21 @@ void PlaylistWidget::buttonSetup(){
     size.setWidth(size.width() - 10);
     size.setHeight(size.height() - 10);
     ui->shuffleButton->setIconSize(size);
+}
+
+void PlaylistWidget::on_shuffleButton_pressed()
+{
+    shuffleToggle = !shuffleToggle;
+    if(shuffleToggle){
+        ui->shuffleButton->setStyleSheet("background-color:gray");
+    }
+    else{
+        ui->shuffleButton->setStyleSheet("background-color:rgba(0,0,0,0.0)");
+    }
+}
+
+void PlaylistWidget::doubleClicked(){
+    mediaPlaylist->setCurrentIndex(ui->contentListWidget->currentRow());
+    currentSongPath = mediaPlaylist->currentMedia().canonicalUrl().toString();
+    emit nextContentLoaded();
 }
