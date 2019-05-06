@@ -54,6 +54,7 @@ void MediaPlayerWidget::on_pushButton_pressed()
     QString filename = QFileDialog::getOpenFileName(this, "Open media file", "", "Audio/Video (*.mp4 *mp3)");
     mp->setMedia(QUrl::fromLocalFile(filename));
     chooseStrategy(filename);
+    ui->mediaLabel->setText(parseTitle(filename));
 }
 
 void MediaPlayerWidget::buildChain(){
@@ -72,6 +73,14 @@ void MediaPlayerWidget::onNext(){
     qDebug() << "FINISHED DETERMINING CONTROLLER";
     setMedia(filepath);
     qDebug() << "JUST SET MEDIA";
+    QString title = parseTitle(filepath);
+    ui->mediaLabel->setText(title);
     controllerWidget->playNewMedia();
+}
+
+QString MediaPlayerWidget::parseTitle(QString filepath){
+    QStringList list = filepath.split("/");
+    QString title = list[list.length() - 1];
+    return title;
 }
 

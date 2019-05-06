@@ -50,6 +50,7 @@ private:
     void setMedia(QString);
     void buildChain();
     void chooseStrategy(QString); // change strategy based on filename
+    QString parseTitle(QString);
 };
 
 #endif // MEDIAPLAYERWIDGET_H

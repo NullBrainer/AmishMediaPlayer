@@ -56,6 +56,19 @@
     <string>File</string>
    </property>
   </widget>
+  <widget class="QLabel" name="mediaLabel">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>645</y>
+     <width>201</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
