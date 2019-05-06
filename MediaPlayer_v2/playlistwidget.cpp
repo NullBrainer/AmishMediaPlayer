@@ -45,6 +45,7 @@ void PlaylistWidget::displayPlaylistContent(){
     while(mediaPlaylist->currentIndex() != -1){
         ui->contentListWidget->addItem((QString)this->mediaPlaylist->currentMedia()
                                        .canonicalUrl().fileName());
+        mediaPlaylist->next();
     }
 
     // Reset index back to beginning of playlist if not empty
@@ -65,12 +66,52 @@ void PlaylistWidget::addPlaylist(){
     qDebug() << "CREATING PLAYLIST: " << currentPlaylistName << endl;
     QString file = QFileDialog::getOpenFileName(this, "Open Video/Audio File", "", "Video/Audio File (*.mp3 *.mp4)");
     mediaPlaylist->addMedia(QUrl::fromLocalFile(file));
-    mediaPlaylist->save(QUrl::fromLocalFile(BASE_PATH + currentPlaylistName), "m3u");
+    QString playlistpath = BASE_PATH + currentPlaylistName;
+    mediaPlaylist->save(QUrl::fromLocalFile(playlistpath), "m3u");
     ui->playlistListWidget->addItem(currentPlaylistName);
+    loadPlaylist(playlistpath);
     mediaPlaylist->next();
+
+    displayPlaylistContent();
+    updateTitle(currentPlaylistName);
+
+}
+
+void PlaylistWidget::deletePlaylist(QString filepath){
+    QDir().remove(filepath);
+}
+
+void PlaylistWidget::loadPlaylist(QString filepath){
+    delete mediaPlaylist;
+    mediaPlaylist = new QMediaPlaylist();
+    mediaPlaylist->load(QUrl::fromLocalFile(filepath), "m3u");
 }
 
 void PlaylistWidget::on_addPlaylistButton_pressed()
 {
     addPlaylist();
+}
+
+void PlaylistWidget::on_deletePlaylistButton_pressed()
+{
+    if(ui->playlistListWidget->currentItem() != nullptr){
+        deletePlaylist(BASE_PATH + ui->playlistListWidget->currentItem()->text());
+        ui->playlistListWidget->takeItem(ui->playlistListWidget->currentRow());
+    }
+}
+
+void PlaylistWidget::on_loadPlaylistButton_pressed()
+{
+    if(ui->playlistListWidget->currentItem() == nullptr){
+        qDebug() << "EMPTY";
+    }
+    else{
+        currentPlaylistName = ui->playlistListWidget->currentItem()->text();
+    }
+    QString path = BASE_PATH + currentPlaylistName;
+    loadPlaylist(path);
+
+    mediaPlaylist->next();
+    displayPlaylistContent();
+    updateTitle(currentPlaylistName);
 }
