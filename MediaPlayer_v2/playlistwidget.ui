@@ -150,6 +150,19 @@
     <string>Load</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="addContentButton_2">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>570</y>
+     <width>31</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

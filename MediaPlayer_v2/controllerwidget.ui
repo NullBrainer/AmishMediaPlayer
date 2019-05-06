@@ -26,35 +26,35 @@
     <item>
      <widget class="QPushButton" name="playButton">
       <property name="text">
-       <string>PLAY</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="pauseButton">
       <property name="text">
-       <string>PAUSE</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="stopButton">
       <property name="text">
-       <string>STOP</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="previousButton">
       <property name="text">
-       <string>PREVIOUS</string>
+       <string/>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QPushButton" name="nextButton">
       <property name="text">
-       <string>NEXT</string>
+       <string/>
       </property>
      </widget>
     </item>

@@ -5,6 +5,9 @@
 #include <QMediaPlayer>
 #include <QTime>
 #include "controllerstrategy.h"
+#include <QDir>
+#include <QPixmap>
+#include <QIcon>
 
 namespace Ui {
 class ControllerWidget;
@@ -46,6 +49,8 @@ private:
     Ui::ControllerWidget *ui;
     ControllerStrategy * controllerStrat;
     QMediaPlayer * mp;
+
+    void buttonSetup();
 };
 
 #endif // CONTROLLERWIDGET_H
