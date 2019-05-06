@@ -24,6 +24,7 @@ public:
 public slots:
     void moveSlider(qint64 pos);
     void adjustSliderMax(qint64 max);
+    void playNewMedia();
 
 private slots:
     void on_playButton_pressed();
@@ -31,6 +32,15 @@ private slots:
     void on_pauseButton_pressed();
 
     void on_stopButton_pressed();
+
+    void on_previousButton_pressed();
+
+    void on_nextButton_pressed();
+
+signals:
+
+    void nextPressed();
+    void previousPressed();
 
 private:
     Ui::ControllerWidget *ui;

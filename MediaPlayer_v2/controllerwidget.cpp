@@ -46,3 +46,20 @@ void ControllerWidget::on_stopButton_pressed()
 {
     controllerStrat->stop(mp);
 }
+
+void ControllerWidget::on_previousButton_pressed()
+{
+    controllerStrat->stop(mp);
+    emit previousPressed();
+}
+
+void ControllerWidget::on_nextButton_pressed()
+{
+    controllerStrat->stop(mp);
+    emit nextPressed();
+}
+
+void ControllerWidget::playNewMedia(){
+    controllerStrat->stop(mp);
+    controllerStrat->play(mp);
+}

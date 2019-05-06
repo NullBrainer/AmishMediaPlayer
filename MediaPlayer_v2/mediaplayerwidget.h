@@ -31,9 +31,13 @@ public:
     explicit MediaPlayerWidget(QWidget *parent = nullptr);
     ~MediaPlayerWidget();
 
+signals:
+    void songLoaded();
 
 private slots:
     void on_pushButton_pressed();
+    void onNext();
+    //void songLoaded();
 
 private:
     Ui::MediaPlayerWidget *ui;

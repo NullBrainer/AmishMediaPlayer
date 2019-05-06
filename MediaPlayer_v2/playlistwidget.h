@@ -29,7 +29,18 @@ public:
     void loadPlaylist(QString);
     void addContent(QString);
     void deleteContent(int);
+    QString getCurrentSongPath();
+    QString formatPath(QString);
     bool empty();
+
+signals:
+
+    void nextContentLoaded();
+
+public slots:
+
+    void nextPressed();
+    void previousPressed();
 
 private slots:
     void on_addPlaylistButton_pressed();
@@ -47,6 +58,7 @@ private:
     const QString PLAYLIST_PATHNAME = "Playlists";
     QMediaPlaylist * mediaPlaylist;
     QString currentPlaylistName;
+    QString currentSongPath;
     const QString BASE_PATH = QDir().absolutePath() + "/Playlists/";
 };
 

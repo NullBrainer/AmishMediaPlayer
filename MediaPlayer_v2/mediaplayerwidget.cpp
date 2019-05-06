@@ -26,6 +26,12 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
     connect(mp, SIGNAL(positionChanged(qint64)), controllerWidget, SLOT(moveSlider(qint64)));
     connect(mp, SIGNAL(durationChanged(qint64)), controllerWidget, SLOT(adjustSliderMax(qint64)));
 
+    connect(controllerWidget, SIGNAL(nextPressed()), playlistWidget, SLOT(nextPressed()));
+
+    connect(controllerWidget, SIGNAL(previousPressed()), playlistWidget, SLOT(previousPressed()));
+    connect(playlistWidget, SIGNAL(nextContentLoaded()), this, SLOT(onNext()));
+
+    // connect(playlistWidget, SIGNAL(nextContentLoaded()), controllerWidget, SLOT(playNewSong()));
 
 }
 
@@ -57,3 +63,13 @@ void MediaPlayerWidget::buildChain(){
 void MediaPlayerWidget::chooseStrategy(QString filename){
     controllerWidget->setStrategy(handler->determineController(filename));
 }
+
+void MediaPlayerWidget::onNext(){
+    QString filepath = playlistWidget->getCurrentSongPath();
+    controllerWidget->setStrategy(handler->determineController(filepath));
+    qDebug() << "FINISHED DETERMINING CONTROLLER";
+    setMedia(filepath);
+    qDebug() << "JUST SET MEDIA";
+    controllerWidget->playNewMedia();
+}
+

@@ -26,10 +26,16 @@ PlaylistWidget::~PlaylistWidget()
 
 void PlaylistWidget::next(){
     mediaPlaylist->next();
+    qDebug() << "CURRENT INDEX: " << mediaPlaylist->currentIndex();
+    currentSongPath = mediaPlaylist->currentMedia().canonicalUrl().toString();
+    qDebug() << "CURRENT SONG PATH: " << currentSongPath;
 }
 
 void PlaylistWidget::previous(){
     mediaPlaylist->previous();
+    qDebug() << "CURRENT INDEX: " << mediaPlaylist->currentIndex();
+    currentSongPath = mediaPlaylist->currentMedia().canonicalUrl().toString();
+    qDebug() << "CURRENT SONG PATH: " << currentSongPath;
 }
 
 void PlaylistWidget::displayPlaylists(){
@@ -45,7 +51,7 @@ void PlaylistWidget::displayPlaylistContent(){
     while(mediaPlaylist->currentIndex() != -1){
         ui->contentListWidget->addItem((QString)this->mediaPlaylist->currentMedia()
                                        .canonicalUrl().fileName());
-        mediaPlaylist->next();
+        next();
     }
 
     // Reset index back to beginning of playlist if not empty
@@ -53,6 +59,8 @@ void PlaylistWidget::displayPlaylistContent(){
         qDebug() << "RESETTING PLAYLIST INDEX";
         mediaPlaylist->setCurrentIndex(0);
     }
+    currentSongPath = mediaPlaylist->currentMedia().canonicalUrl().toString();
+    qDebug() << "CURRENT SONG PATH AFTER DISPLAYING " << currentSongPath;
 }
 
 void PlaylistWidget::updateTitle(QString title){
@@ -70,7 +78,7 @@ void PlaylistWidget::addPlaylist(){
     mediaPlaylist->save(QUrl::fromLocalFile(playlistpath), "m3u");
     ui->playlistListWidget->addItem(currentPlaylistName);
     loadPlaylist(playlistpath);
-    mediaPlaylist->next();
+    next();
 
     displayPlaylistContent();
     updateTitle(currentPlaylistName);
@@ -124,9 +132,10 @@ void PlaylistWidget::on_loadPlaylistButton_pressed()
     QString path = BASE_PATH + currentPlaylistName;
     loadPlaylist(path);
 
-    mediaPlaylist->next();
+    next();
     displayPlaylistContent();
     updateTitle(currentPlaylistName);
+    emit nextContentLoaded();
 }
 
 void PlaylistWidget::on_addContentButton_pressed()
@@ -151,4 +160,31 @@ void PlaylistWidget::on_deleteContentButton_pressed()
         deleteContent(index);
         ui->contentListWidget->takeItem(index);
     }
+}
+
+void PlaylistWidget::nextPressed(){
+    next();
+    if(mediaPlaylist->currentIndex() == -1){
+        next();
+    }
+    emit nextContentLoaded();
+}
+
+void PlaylistWidget::previousPressed(){
+    previous();
+    if(mediaPlaylist->currentIndex() == -1){
+        previous();
+    }
+    emit nextContentLoaded();
+}
+
+QString PlaylistWidget::formatPath(QString filepath){
+    if(filepath.startsWith("file:///")){
+        filepath = filepath.remove(0,8);
+    }
+    return filepath;
+}
+
+QString PlaylistWidget::getCurrentSongPath(){
+    return formatPath(currentSongPath);
 }
