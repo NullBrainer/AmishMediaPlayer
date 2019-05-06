@@ -91,6 +91,11 @@ void PlaylistWidget::addContent(QString filepath){
     mediaPlaylist->addMedia(QUrl::fromLocalFile(filepath));
 }
 
+void PlaylistWidget::deleteContent(int index){
+    mediaPlaylist->removeMedia(index);
+    mediaPlaylist->save(QUrl::fromLocalFile(BASE_PATH + currentPlaylistName), "m3u");
+}
+
 bool PlaylistWidget::empty(){
     return !(mediaPlaylist->mediaCount() > 0);
 }
@@ -133,5 +138,17 @@ void PlaylistWidget::on_addContentButton_pressed()
         file = splitFile[splitFile.length() - 1];
         ui->contentListWidget->addItem(file);
         mediaPlaylist->save(QUrl::fromLocalFile(BASE_PATH + currentPlaylistName), "m3u");
+    }
+}
+
+void PlaylistWidget::on_deleteContentButton_pressed()
+{
+    if(ui->contentListWidget->currentItem() == nullptr){
+        qDebug() << "NOTHING SELECTED FOR DELETION";
+    }
+    else{
+        int index = ui->contentListWidget->currentRow();
+        deleteContent(index);
+        ui->contentListWidget->takeItem(index);
     }
 }
