@@ -97,6 +97,7 @@ void PlaylistWidget::addPlaylist(){
     displayPlaylistContent();
     updateTitle(currentPlaylistName);
 
+    emit nextContentLoaded();
 }
 
 void PlaylistWidget::deletePlaylist(QString filepath){
