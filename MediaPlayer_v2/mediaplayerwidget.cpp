@@ -9,6 +9,7 @@ MediaPlayerWidget::MediaPlayerWidget(QWidget *parent) :
 
     vw = new QVideoWidget(this);
     mp = new QMediaPlayer(this);
+
     playlistWidget = new PlaylistWidget(this);
     controllerWidget = new ControllerWidget(this);
 

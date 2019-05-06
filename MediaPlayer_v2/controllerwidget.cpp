@@ -17,6 +17,7 @@ ControllerWidget::~ControllerWidget()
 
 void ControllerWidget::setStrategy(ControllerStrategy * cs){
     this->controllerStrat = cs;
+    controllerStrat->setVolume(ui->volumeDial->value(), mp);
 }
 
 void ControllerWidget::setMediaPlayer(QMediaPlayer * mediaPlayer){
@@ -66,11 +67,11 @@ void ControllerWidget::playNewMedia(){
 }
 
 void ControllerWidget::buttonSetup(){
-    QPixmap pixmapPlay(QDir().absolutePath() + "/player_buttons/play-button.png");
-    QPixmap pixmapPause(QDir().absolutePath() + "/player_buttons/rounded-pause-button.png");
-    QPixmap pixmapStop(QDir().absolutePath() + "/player_buttons/stop-button.png");
-    QPixmap pixmapNext(QDir().absolutePath() + "/player_buttons/next-button.png");
-    QPixmap pixmapPrevious(QDir().absolutePath() + "/player_buttons/previous-button.png");
+    QPixmap pixmapPlay("./player_buttons/play-button.png");
+    QPixmap pixmapPause("./player_buttons/rounded-pause-button.png");
+    QPixmap pixmapStop("./player_buttons/stop-button.png");
+    QPixmap pixmapNext("./player_buttons/next-button.png");
+    QPixmap pixmapPrevious("./player_buttons/previous-button.png");
 
     QIcon playIcon(pixmapPlay);
     QIcon pauseIcon(pixmapPause);
@@ -90,4 +91,16 @@ void ControllerWidget::buttonSetup(){
     ui->nextButton->setIconSize(ui->nextButton->size());
     ui->previousButton->setIconSize(ui->previousButton->size());
 
+}
+
+void ControllerWidget::on_durationSlider_sliderMoved(int position)
+{
+    controllerStrat->seek(position, mp);
+}
+
+
+
+void ControllerWidget::on_volumeDial_valueChanged(int value)
+{
+    controllerStrat->setVolume(value, mp);
 }

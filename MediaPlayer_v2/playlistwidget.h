@@ -6,6 +6,8 @@
 #include <QDir>
 #include <QInputDialog>
 #include <QFileDialog>
+#include <QPixmap>
+#include <QIcon>
 
 namespace Ui {
 class PlaylistWidget;
@@ -60,6 +62,8 @@ private:
     QString currentPlaylistName;
     QString currentSongPath;
     const QString BASE_PATH = QDir().absolutePath() + "/Playlists/";
+
+    void buttonSetup();
 };
 
 #endif // PLAYLISTWIDGET_H

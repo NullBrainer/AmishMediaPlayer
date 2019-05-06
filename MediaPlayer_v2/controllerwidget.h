@@ -40,6 +40,10 @@ private slots:
 
     void on_nextButton_pressed();
 
+    void on_durationSlider_sliderMoved(int position);
+
+    void on_volumeDial_valueChanged(int value);
+
 signals:
 
     void nextPressed();

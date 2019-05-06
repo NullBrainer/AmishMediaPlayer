@@ -59,7 +59,11 @@
      </widget>
     </item>
     <item>
-     <widget class="QDial" name="volumeDial"/>
+     <widget class="QDial" name="volumeDial">
+      <property name="value">
+       <number>50</number>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

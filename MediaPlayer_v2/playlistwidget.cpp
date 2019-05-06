@@ -6,6 +6,7 @@ PlaylistWidget::PlaylistWidget(QWidget *parent) :
     ui(new Ui::PlaylistWidget)
 {
     ui->setupUi(this);
+    buttonSetup();
     mediaPlaylist = new QMediaPlaylist();
 
     // Check if playlist folder exists
@@ -187,4 +188,14 @@ QString PlaylistWidget::formatPath(QString filepath){
 
 QString PlaylistWidget::getCurrentSongPath(){
     return formatPath(currentSongPath);
+}
+
+void PlaylistWidget::buttonSetup(){
+    QPixmap pixmapShuffle("./player_buttons/arrow-shuffle.png");
+    QIcon shuffleIcon(pixmapShuffle);
+    ui->shuffleButton->setIcon(shuffleIcon);
+    QSize size = ui->shuffleButton->size();
+    size.setWidth(size.width() - 10);
+    size.setHeight(size.height() - 10);
+    ui->shuffleButton->setIconSize(size);
 }
