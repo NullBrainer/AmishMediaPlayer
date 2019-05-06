@@ -67,11 +67,11 @@ void ControllerWidget::playNewMedia(){
 }
 
 void ControllerWidget::buttonSetup(){
-    QPixmap pixmapPlay("./player_buttons/play-button.png");
-    QPixmap pixmapPause("./player_buttons/rounded-pause-button.png");
-    QPixmap pixmapStop("./player_buttons/stop-button.png");
-    QPixmap pixmapNext("./player_buttons/next-button.png");
-    QPixmap pixmapPrevious("./player_buttons/previous-button.png");
+    QPixmap pixmapPlay(":/icons/player_buttons/play-button.png");
+    QPixmap pixmapPause(":/icons/player_buttons/rounded-pause-button.png");
+    QPixmap pixmapStop(":/icons/player_buttons/stop-button.png");
+    QPixmap pixmapNext(":/icons/player_buttons/next-button.png");
+    QPixmap pixmapPrevious(":/icons/player_buttons/previous-button.png");
 
     QIcon playIcon(pixmapPlay);
     QIcon pauseIcon(pixmapPause);

@@ -204,7 +204,7 @@ QString PlaylistWidget::getCurrentSongPath(){
 }
 
 void PlaylistWidget::buttonSetup(){
-    QPixmap pixmapShuffle("./player_buttons/arrow-shuffle.png");
+    QPixmap pixmapShuffle(":/icons/player_buttons/arrow-shuffle.png");
     QIcon shuffleIcon(pixmapShuffle);
     ui->shuffleButton->setIcon(shuffleIcon);
     QSize size = ui->shuffleButton->size();

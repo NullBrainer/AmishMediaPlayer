@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>player_buttons/arrow-shuffle.png</file>
+        <file>player_buttons/next-button.png</file>
+        <file>player_buttons/play-button.png</file>
+        <file>player_buttons/previous-button.png</file>
+        <file>player_buttons/rounded-pause-button.png</file>
+        <file>player_buttons/stop-button.png</file>
+    </qresource>
+</RCC>

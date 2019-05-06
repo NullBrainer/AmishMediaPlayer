@@ -51,7 +51,7 @@ MediaPlayerWidget::~MediaPlayerWidget()
 
 void MediaPlayerWidget::on_pushButton_pressed()
 {
-    QString filename = QFileDialog::getOpenFileName(this, "Open media file", "", "Audio/Video (*.mp4 *mp3)");
+    QString filename = QFileDialog::getOpenFileName (this, "Open media file", "", "Audio/Video (*.mp4 *mp3)");
     mp->setMedia(QUrl::fromLocalFile(filename));
     chooseStrategy(filename);
     ui->mediaLabel->setText(parseTitle(filename));
