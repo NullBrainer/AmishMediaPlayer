@@ -36,34 +36,47 @@ void ControllerWidget::adjustSliderMax(qint64 max){
 
 void ControllerWidget::on_playButton_pressed()
 {
-    controllerStrat->play(mp);
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->play(mp);
+    }
 }
 
 void ControllerWidget::on_pauseButton_pressed()
 {
-    controllerStrat->pause(mp);
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->pause(mp);
+    }
 }
 
 void ControllerWidget::on_stopButton_pressed()
 {
-    controllerStrat->stop(mp);
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->stop(mp);
+    }
 }
 
 void ControllerWidget::on_previousButton_pressed()
 {
-    controllerStrat->stop(mp);
-    emit previousPressed();
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->stop(mp);
+        emit previousPressed();
+    }
 }
 
 void ControllerWidget::on_nextButton_pressed()
 {
-    controllerStrat->stop(mp);
-    emit nextPressed();
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->stop(mp);
+        emit nextPressed();
+    }
 }
 
 void ControllerWidget::playNewMedia(){
-    controllerStrat->stop(mp);
-    controllerStrat->play(mp);
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->stop(mp);
+        controllerStrat->play(mp);
+    }
+
 }
 
 void ControllerWidget::buttonSetup(){
@@ -95,12 +108,16 @@ void ControllerWidget::buttonSetup(){
 
 void ControllerWidget::on_durationSlider_sliderMoved(int position)
 {
-    controllerStrat->seek(position, mp);
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->seek(position, mp);
+    }
 }
 
 
 
 void ControllerWidget::on_volumeDial_valueChanged(int value)
 {
-    controllerStrat->setVolume(value, mp);
+    if(!mp->currentMedia().isNull()){
+        controllerStrat->setVolume(value, mp);
+    }
 }

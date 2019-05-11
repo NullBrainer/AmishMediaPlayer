@@ -140,6 +140,7 @@ void PlaylistWidget::on_loadPlaylistButton_pressed()
 {
     if(ui->playlistListWidget->currentItem() == nullptr){
         qDebug() << "EMPTY";
+        return;
     }
     else{
         currentPlaylistName = ui->playlistListWidget->currentItem()->text();
